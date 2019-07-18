@@ -15,9 +15,10 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::view('/contact', 'contact.index');
+Route::get('contact', 'ContactFormController@create');
+Route::post('contact', 'ContactFormController@store');
 
-Route::get('/about', function () {
+Route::get('about', function () {
     $aboutList = [
         'a', 'b'
     ];

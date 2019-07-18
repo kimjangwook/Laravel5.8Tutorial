@@ -9,10 +9,10 @@
                 <a class="nav-link" href="/about">회사 소개</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/contact">연락처</a>
+                <a class="nav-link" href="/customers">고객 리스트</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/customers">고객 리스트</a>
+                <a class="nav-link" href="/contact">문의</a>
             </li>
         </ul>
     </div>

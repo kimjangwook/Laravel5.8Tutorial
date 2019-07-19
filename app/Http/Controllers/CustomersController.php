@@ -26,7 +26,7 @@ class CustomersController extends Controller
     {
         $customer = Customer::create($this->validateRequest());
         event(new NewCustomerHasRegistered($customer));
-        return redirect('/customers/'.$customer->id);
+        return redirect(route('customers.show', ['customer' => $customer]));
     }
 
     public function show(Customer $customer)
@@ -42,13 +42,13 @@ class CustomersController extends Controller
     public function update(Customer $customer)
     {
         $customer->update($this->validateRequest($customer->id));
-        return redirect('/customers/'.$customer->id);
+        return redirect(route('customers.show', ['customer' => $customer]));
     }
 
     public function destroy(Customer $customer)
     {
         $customer->delete();
-        return redirect('/customers');
+        return redirect(route('customers.index'));
     }
 
     public function validateRequest($id = null)

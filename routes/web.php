@@ -18,12 +18,7 @@ Route::get('/', function () {
 Route::get('contact', 'ContactFormController@create');
 Route::post('contact', 'ContactFormController@store');
 
-Route::get('about', function () {
-    $aboutList = [
-        'a', 'b'
-    ];
-    return view('about.index', compact('aboutList'));
-});
+Route::view('about', 'about.index')->middleware('test');
 Route::resource('customers', 'CustomersController')->middleware('auth');
 
 //Route::get('customers', 'CustomersController@index');

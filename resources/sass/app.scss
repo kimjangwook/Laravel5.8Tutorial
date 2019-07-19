@@ -6,3 +6,10 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+
+.fs {
+   &_small {
+       font-size: 0.7rem;
+   }
+}

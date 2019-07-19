@@ -12,12 +12,6 @@
     <div class="card-header">ログインステータス</div>
 
     <div class="card-body">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-
         @auth
             ログイン済
         @endauth
@@ -27,4 +21,6 @@
         @endguest
     </div>
 </div>
+
+<axios-test></axios-test>
 @endsection

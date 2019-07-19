@@ -19,6 +19,6 @@
             <div class="text-danger">{{ $errors->first('message') }}</div>
         </div>
 
-        <button type="submit" class="btn btn-primary">お問い合わせ</button>
+        <btn-submit label="お問い合わせ"></btn-submit>
     </form>
 @endsection

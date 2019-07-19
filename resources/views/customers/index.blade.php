@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.app')
 @section('content')
     <h1>顧客一覧</h1>
     <a href="/customers/create" class="btn btn-dark">顧客追加</a>

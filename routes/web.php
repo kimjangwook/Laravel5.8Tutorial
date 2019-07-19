@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return view('home');
 });
 
 Route::get('contact', 'ContactFormController@create');
@@ -26,10 +26,14 @@ Route::get('about', function () {
 });
 Route::resource('customers', 'CustomersController');
 
-//Route::get('/customers', 'CustomersController@index');
-//Route::get('/customers/create', 'CustomersController@create');
-//Route::post('/customers', 'CustomersController@store');
-//Route::get('/customers/{customer}', 'CustomersController@show');
-//Route::get('/customers/{customer}/edit', 'CustomersController@edit');
-//Route::put('/customers/{customer}', 'CustomersController@update');
-//Route::delete('/customers/{customer}', 'CustomersController@destroy');
+//Route::get('customers', 'CustomersController@index');
+//Route::get('customers/create', 'CustomersController@create');
+//Route::post('customers', 'CustomersController@store');
+//Route::get('customers/{customer}', 'CustomersController@show');
+//Route::get('customers/{customer}/edit', 'CustomersController@edit');
+//Route::put('customers/{customer}', 'CustomersController@update');
+//Route::delete('customers/{customer}', 'CustomersController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

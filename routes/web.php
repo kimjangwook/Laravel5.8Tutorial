@@ -24,7 +24,7 @@ Route::get('about', function () {
     ];
     return view('about.index', compact('aboutList'));
 });
-Route::resource('customers', 'CustomersController');
+Route::resource('customers', 'CustomersController')->middleware('auth');
 
 //Route::get('customers', 'CustomersController@index');
 //Route::get('customers/create', 'CustomersController@create');

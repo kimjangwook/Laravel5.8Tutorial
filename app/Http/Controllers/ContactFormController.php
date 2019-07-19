@@ -25,6 +25,7 @@ class ContactFormController extends Controller
         $to = 'test@test.com';
         Mail::to($to)->send(new ContactFormMail($data));
 
-        return view('contact.create');
+//        session()->flash('success', '문의하신 내용을 검토 후, 등록하신 메일 주소로 답변 드리도록하겠습니다.');
+        return redirect('/contact')->with('success', '문의하신 내용을 검토 후, 등록하신 메일 주소로 답변 드리도록하겠습니다.');
     }
 }

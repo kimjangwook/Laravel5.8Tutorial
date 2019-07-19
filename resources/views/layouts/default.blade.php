@@ -5,6 +5,13 @@
 <body>
 <div class="container">
     @include('layouts.nav')
+
+    @if (session()->has('success'))
+        <div class="alert alert-primary" role="alert">
+            <strong>성공!</strong> {{ session()->get('success') }}
+        </div>
+    @endif
+
     <div>
         @yield('content')
     </div>

@@ -1,31 +1,31 @@
 @extends('layouts.default')
 @section('content')
-    <h1>고객 정보</h1>
+    <h1>顧客情報</h1>
 
     <div class="form-group">
-        이름: {{ $customer->name }}
+        お名前: {{ $customer->name }}
     </div>
     <div class="form-group">
-        이메일: {{ $customer->email }}
+        メールアドレス: {{ $customer->email }}
     </div>
     <div class="form-group">
-        상태: {{ $customer->active }}
+        ステータス: {{ $customer->active }}
     </div>
     <div class="form-group">
-        회사명: {{ $customer->company->name }}
+        会社名: {{ $customer->company->name }}
     </div>
     <div class="form-group">
-        회사번호: {{ $customer->company->phone }}
+        会社電話番号: {{ $customer->company->phone }}
     </div>
 
     <form action="/customers/{{ $customer->id }}" method="POST">
-        <a href="/customers/{{ $customer->id }}/edit" class="btn btn-primary">수정</a>
+        <a href="/customers/{{ $customer->id }}/edit" class="btn btn-primary">修正</a>
 
         @method('DELETE')
         @csrf
-        <button type="submit" class="btn btn-danger">삭제</button>
+        <button type="submit" class="btn btn-danger">削除</button>
 
-        <a href="/customers" class="btn btn-link">뒤로</a>
+        <a href="/customers" class="btn btn-link">キャンセル</a>
     </form>
 
 @endsection

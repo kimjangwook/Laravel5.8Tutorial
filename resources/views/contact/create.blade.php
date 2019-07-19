@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <h1>お問い合わせ</h1>
-    <form action="/contact" method="POST">
+    <form action="{{ route('contact.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="inputName">お名前</label>

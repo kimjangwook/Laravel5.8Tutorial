@@ -11,14 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('/', 'home')->name('home.index');
 
-Route::get('contact', 'ContactFormController@create');
-Route::post('contact', 'ContactFormController@store');
+Route::get('contact', 'ContactFormController@create')->name('contact.create');
+Route::post('contact', 'ContactFormController@store')->name('contact.store');
 
-Route::view('about', 'about.index')->middleware('test');
+Route::view('about', 'about.index')->name('about.index')->middleware('test');
 Route::resource('customers', 'CustomersController')->middleware('auth');
 
 //Route::get('customers', 'CustomersController@index');
@@ -31,4 +29,4 @@ Route::resource('customers', 'CustomersController')->middleware('auth');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();

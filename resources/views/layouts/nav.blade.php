@@ -1,20 +1,20 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light py-3 my-3">
-    <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" href="{{ route('home.index') }}">Home</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="/about">会社紹介</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/customers">顧客一覧</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contact">お問い合わせ</a>
+                <a class="nav-link" href="{{ route('about.index') }}">会社紹介</a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('contact.create') }}">お問い合わせ</a>
+            </li>
+            <li class="nav-item ml-5">
+                <a class="nav-link" href="{{ route('customers.index') }}">顧客一覧</a>
+            </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">

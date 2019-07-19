@@ -18,14 +18,14 @@
         会社電話番号: {{ $customer->company->phone }}
     </div>
 
-    <form action="/customers/{{ $customer->id }}" method="POST">
-        <a href="/customers/{{ $customer->id }}/edit" class="btn btn-primary">修正</a>
+    <form action="{{ route('customers.destroy', ['customer' => $customer]) }}" method="POST">
+        <a href="{{ route('customers.edit', ['customer' => $customer]) }}" class="btn btn-primary">修正</a>
 
         @method('DELETE')
         @csrf
         <button type="submit" class="btn btn-danger">削除</button>
 
-        <a href="/customers" class="btn btn-link">キャンセル</a>
+        <a href="{{ route('customers.index') }}" class="btn btn-link">キャンセル</a>
     </form>
 
 @endsection

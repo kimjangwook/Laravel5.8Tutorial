@@ -13,13 +13,6 @@ class CompaniesTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('companies')->insert([
-            'name' => Str::random(10),
-            'phone' => '01-234-5678',
-        ]);
-        DB::table('companies')->insert([
-            'name' => Str::random(10),
-            'phone' => '01-234-5678',
-        ]);
+        factory(\App\Company::class, 10)->create();
     }
 }

@@ -6,6 +6,7 @@ use App\Company;
 use App\Customer;
 use App\Events\NewCustomerHasRegistered;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class CustomersController extends Controller
 {
@@ -61,7 +62,7 @@ class CustomersController extends Controller
             'email' => 'required|email|unique:customers,email'.$idFlag,
             'active' => 'required|boolean',
             'company_id' => 'required|integer|exists:companies,id',
-            'image' => 'file|image|max:5120',
+            'image' => 'sometimes|file|image|max:5120',
         ]);
     }
 
@@ -71,6 +72,11 @@ class CustomersController extends Controller
             $customer->update([
                 'image' => request()->image->store('uploads', 'public'),
             ]);
+
+            $image = Image::make(public_path('storage'.DIRECTORY_SEPARATOR.$customer->image))
+                ->fit(300)
+                ->crop(100, 200)
+                ->save();
         }
     }
 }

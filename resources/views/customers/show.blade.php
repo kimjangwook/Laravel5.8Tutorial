@@ -17,6 +17,15 @@
     <div class="form-group">
         会社電話番号: {{ $customer->company->phone }}
     </div>
+    @if ($customer->image)
+    <div class="form-group">
+        <div class="row">
+            <div class="col-4">
+                <img src="{{ asset('storage/'.$customer->image) }}" style="width: 100%; height: auto;">
+            </div>
+        </div>
+    </div>
+    @endif
 
     <form action="{{ route('customers.destroy', ['customer' => $customer]) }}" method="POST">
         <a href="{{ route('customers.edit', ['customer' => $customer]) }}" class="btn btn-primary">修正</a>

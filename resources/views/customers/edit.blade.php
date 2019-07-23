@@ -2,7 +2,7 @@
 @section('content')
     <h1>顧客情報修正</h1>
 
-    <form action="{{ route('customers.update', ['customer' => $customer]) }}" method="POST">
+    <form action="{{ route('customers.update', ['customer' => $customer]) }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
         @include('customers.form')
         <button type="submit" class="btn btn-primary">修正</button>

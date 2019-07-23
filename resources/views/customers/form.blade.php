@@ -27,3 +27,9 @@
     </select>
     <div class="text-danger">{{ $errors->first('company_id') }}</div>
 </div>
+
+<div class="form-group d-flex flex-column">
+    <label for="inputFileProfile">プロフィール写真</label>
+    <input type="file" name="image" class="py-2" id="inputFileProfile">
+    <div class="text-danger">{{ $errors->first('image') }}</div>
+</div>

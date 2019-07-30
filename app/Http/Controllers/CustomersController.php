@@ -12,7 +12,7 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $customerList = Customer::all();
+        $customerList = Customer::with('company')->get();
         return view('customers.index', compact('customerList'));
     }
 

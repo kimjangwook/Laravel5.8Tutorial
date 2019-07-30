@@ -6,7 +6,7 @@
         @foreach ($customerList as $customer)
             <li class="py-3">
                 <a href="{{ route('customers.show', ['customer' => $customer]) }}">
-                    お名前: {{ $customer->name }}
+                    お名前: {{ $customer->name }} / {{ $customer->company->name }}
                 </a>
             </li>
         @endforeach

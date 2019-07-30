@@ -25,6 +25,8 @@ class CustomersController extends Controller
 
     public function store()
     {
+        // Use the create method written on CustomerPolicy
+//        $this->authorize('create', Customer::class);
         $customer = Customer::create($this->validateRequest());
         $this->storeImage($customer);
         event(new NewCustomerHasRegistered($customer));
@@ -50,6 +52,8 @@ class CustomersController extends Controller
 
     public function destroy(Customer $customer)
     {
+        // Use the create method written on CustomerPolicy
+//        $this->authorize('delete', $customer);
         $customer->delete();
         return redirect(route('customers.index'));
     }

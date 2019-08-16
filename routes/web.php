@@ -27,4 +27,6 @@ Route::resource('customers', 'CustomersController')->middleware('auth');
 //Route::put('customers/{customer}', 'CustomersController@update')->name('customers.update');;
 //Route::delete('customers/{customer}', 'CustomersController@destroy')->name('customers.destroy');;
 
+Route::get('posts', 'PostsController@index')->name('posts.index');
+
 Auth::routes();

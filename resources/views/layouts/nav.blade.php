@@ -15,6 +15,9 @@
             <li class="nav-item ml-5">
                 <a class="nav-link" href="{{ route('customers.index') }}">顧客一覧</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('posts.index') }}">Post一覧</a>
+            </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">

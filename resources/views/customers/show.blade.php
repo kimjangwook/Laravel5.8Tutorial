@@ -9,6 +9,9 @@
         メールアドレス: {{ $customer->email }}
     </div>
     <div class="form-group">
+        電話番号: {{ $customer->phone->phone ?? '' }}
+    </div>
+    <div class="form-group">
         ステータス: {{ $customer->active }}
     </div>
     <div class="form-group">

@@ -1,4 +1,6 @@
 @csrf
+<input type="hidden" name="customer_id" value="{{ old('customer_id') ?? $customer->phone->customer_id ?? '' }}">
+
 <div class="form-group">
     <label for="inputName">お名前</label>
     <input type="text" name="name" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="お名前を入力してください" value="{{ old('name') ?? $customer->name }}">
@@ -26,6 +28,12 @@
         @endforeach
     </select>
     <div class="text-danger">{{ $errors->first('company_id') }}</div>
+</div>
+
+<div class="form-group">
+    <label for="inputPhone">電話番号</label>
+    <input type="text" name="phone" class="form-control" id="inputPhone" aria-describedby="phoneHelp" value="{{ old('phone') ?? $customer->phone->phone ?? '' }}">
+    <div class="text-danger">{{ $errors->first('phone') }}</div>
 </div>
 
 <div class="form-group d-flex flex-column">

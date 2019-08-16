@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Customer;
 use App\Events\NewCustomerHasRegistered;
+use App\Phone;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -12,7 +13,7 @@ class CustomersController extends Controller
 {
     public function index()
     {
-        $customerList = Customer::with('company')->paginate(15);
+        $customerList = Customer::with(['company', 'phone'])->paginate(15);
         return view('customers.index', compact('customerList'));
     }
 
@@ -27,9 +28,15 @@ class CustomersController extends Controller
     {
         // Use the create method written on CustomerPolicy
 //        $this->authorize('create', Customer::class);
-        $customer = Customer::create($this->validateRequest());
+        $data = $this->validateRequest();
+
+        $customer = Customer::create($data);
         $this->storeImage($customer);
         event(new NewCustomerHasRegistered($customer));
+
+        $data['customer_id'] = $customer->id;
+        Phone::create($data);
+
         return redirect(route('customers.show', ['customer' => $customer]));
     }
 
@@ -45,8 +52,14 @@ class CustomersController extends Controller
 
     public function update(Customer $customer)
     {
-        $customer->update($this->validateRequest($customer->id));
+        $data = $this->validateRequest($customer->id);
+
+        $customer->update($data);
         $this->storeImage($customer);
+
+        $phone = $customer->phone;
+        $phone->update($data);
+
         return redirect(route('customers.show', ['customer' => $customer]));
     }
 
@@ -54,6 +67,7 @@ class CustomersController extends Controller
     {
         // Use the create method written on CustomerPolicy
 //        $this->authorize('delete', $customer);
+        $customer->phone->delete();
         $customer->delete();
         return redirect(route('customers.index'));
     }
@@ -67,6 +81,8 @@ class CustomersController extends Controller
             'active' => 'required|boolean',
             'company_id' => 'required|integer|exists:companies,id',
             'image' => 'sometimes|file|image|max:5120',
+            'phone' => 'nullable',
+            'customer_id' => 'nullable|integer',
         ]);
     }
 

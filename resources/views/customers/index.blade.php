@@ -24,7 +24,7 @@
             <td>{{ $customer->email }}</td>
             <td>{{ $customer->active }}</td>
             <td>{{ $customer->company->name }}</td>
-            <td>{{ $customer->company->phone }}</td>
+            <td>{{ $customer->phone->phone ?? '' }}</td>
             <td>
                 @can('view', $customer)
                     <a href="{{ route('customers.show', ['customer' => $customer]) }}" class="btn btn-secondary">Show</a>

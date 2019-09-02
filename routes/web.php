@@ -29,4 +29,7 @@ Route::resource('customers', 'CustomersController')->middleware('auth');
 
 Route::get('posts', 'PostsController@index')->name('posts.index');
 
+Route::get('role/user/role', 'RoleUserController@syncUserRole');
+Route::get('role/user/user', 'RoleUserController@syncRoleUser');
+
 Auth::routes();

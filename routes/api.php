@@ -13,9 +13,14 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('people', function () {
+    $people = \App\Person::all();
+    return $people;
 });
 
-
-Route::get('test', 'TestApiController@index');
+Route::get('people/{person}', function (\App\Person $person) {
+    return $person;
+});
+Route::get('people/{person}/my_number', function (\App\Person $person) {
+    return $person->myNumber;
+});

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string name
  * @property string email
  * @property \App\MyNumber myNumber
+ * @property \App\Account accounts
  */
 class Person extends Model
 {
@@ -20,5 +21,10 @@ class Person extends Model
     public function myNumber()
     {
         return $this->hasOne(MyNumber::class);
+    }
+
+    public function accounts()
+    {
+        return $this->hasMany(Account::class);
     }
 }

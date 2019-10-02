@@ -24,3 +24,6 @@ Route::get('people/{person}', function (\App\Person $person) {
 Route::get('people/{person}/my_number', function (\App\Person $person) {
     return $person->myNumber;
 });
+Route::get('people/{person}/accounts', function (\App\Person $person) {
+    return $person->accounts;
+});

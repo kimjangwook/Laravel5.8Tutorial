@@ -13,17 +13,36 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('people', function () {
-    $people = \App\Person::all();
-    return $people;
-});
+Route::prefix('people')->group(function () {
+    Route::get('/', function () {
+        $people = \App\Person::all();
+        return $people;
+    });
 
-Route::get('people/{person}', function (\App\Person $person) {
-    return $person;
+    Route::get('{person}', function (\App\Person $person) {
+        return $person;
+    });
+    Route::get('{person}/my_number', function (\App\Person $person) {
+        return $person->myNumber;
+    });
+    Route::get('{person}/accounts', function (\App\Person $person) {
+        return $person->accounts;
+    });
 });
-Route::get('people/{person}/my_number', function (\App\Person $person) {
-    return $person->myNumber;
-});
-Route::get('people/{person}/accounts', function (\App\Person $person) {
-    return $person->accounts;
+Route::prefix('groups')->group(function () {
+    Route::get('/', function () {
+        return \App\Person::with('groups')->get();
+    });
+
+    Route::get('sync', function () {
+        $groups = \App\Group::all();
+        $people = \App\Person::all();
+
+        $groupsArr = [$groups, $groups->first(), $groups->last()];
+
+        foreach ($people as $person) {
+            $idx = rand(0, 2);
+            $person->groups()->sync($groupsArr[$idx]);
+        }
+    });
 });
